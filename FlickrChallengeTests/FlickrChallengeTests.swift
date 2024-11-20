@@ -5,13 +5,22 @@
 //  Created by Marco Abundo on 11/20/24.
 //
 
-import Testing
+import XCTest
 @testable import FlickrChallenge
 
-struct FlickrChallengeTests {
+class FlickrChallengeTests: XCTestCase {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    func testFetchImagesWithValidQuery() {
+        let expectation = XCTestExpectation(description: "Fetch images from Flickr")
+        let viewModel = FlickrViewModel()
+
+        viewModel.fetchImages(for: "porcupine")
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            XCTAssertFalse(viewModel.images.isEmpty, "Expected non-empty images for a valid query")
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 5.0)
     }
-
 }
