@@ -29,7 +29,8 @@ class FlickrViewModel: ObservableObject {
     }
 
     func fetchImages(for query: String) {
-        let tags = query.replacingOccurrences(of: ",", with: "%2C")
+        var tags = query.replacingOccurrences(of: ",", with: "%2C")
+        tags = query.trimmingCharacters(in: .whitespaces)
         let urlString = "https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags=\(tags)"
 
         guard let url = URL(string: urlString) else { return }
