@@ -17,11 +17,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 if viewModel.images.isEmpty {
-                    Spacer()
-                    Text("No results")
-                        .foregroundColor(.gray)
-                        .padding()
-                    Spacer()
+                    ContentUnavailableView.init("No results", systemImage: "photo.circle")
                 } else {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 10) {
@@ -49,7 +45,6 @@ struct ContentView: View {
                                 .onTapGesture {
                                     selectedImage = image
                                 }
-
                             }
                         }
                         .padding()
@@ -59,8 +54,8 @@ struct ContentView: View {
             .navigationTitle("Flickr Search")
             .searchable(text: $viewModel.searchQuery, placement: .navigationBarDrawer(displayMode: .always))
             .sheet(item: $selectedImage) { image in
-                            ImageDetailView(image: image)
-                        }
+                ImageDetailView(image: image)
+            }
         }
     }
 }
