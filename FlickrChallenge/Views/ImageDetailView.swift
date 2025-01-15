@@ -18,22 +18,15 @@ struct ImageDetailView: View {
                     // Display the image
                     AsyncImage(url: URL(string: image.media.m)) { phase in
                         switch phase {
-                        case .empty:
-                            ProgressView()
-                                .frame(height: 300)
                         case .success(let image):
                             image
                                 .resizable()
                                 .scaledToFit()
-                                .frame(maxWidth: .infinity)
                         case .failure:
                             Image(systemName: "photo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 300)
                                 .foregroundColor(.gray)
-                        @unknown default:
-                            EmptyView()
+                        default:
+                            ProgressView()
                         }
                     }
                     .frame(maxWidth: .infinity)
