@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 class FlickrViewModel: ObservableObject {
     @Published var images: [FlickrImage] = []
     @Published var searchQuery: String = ""
