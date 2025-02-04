@@ -8,8 +8,7 @@ words (such as “forest, bird”).
 
 Fetch the list of images using this API from Flickr:
 
-https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags=por
-cupine
+https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1&tags=porcupine
 
 You’ll replace “porcupine” in that URL with the search word(s) typed by the user.
 This is a free public feed. No API key is required. You can learn more about this API here: The App
